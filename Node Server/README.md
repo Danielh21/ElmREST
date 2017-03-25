@@ -1,7 +1,7 @@
 # Node Server
 
 
-Runs on port 3000 and has to methods.
+Runs on port 3000 and has two methods.
 
 ```Get: "/counter" -> Gives you the number, by default 99```
 

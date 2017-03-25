@@ -12,7 +12,7 @@ type Msg
     | Get
     | Set
     | AfterGet (Result Http.Error String)
-    | AfterSet (Result Http.Error String)
+    | AfterPut (Result Http.Error String)
 
 
 
@@ -51,7 +51,7 @@ setNumOnServer input =
       , withCredentials = False
       }
     in
-      Http.send AfterSet request
+      Http.send AfterPut request
     
 --End Put Method --
 
@@ -69,9 +69,9 @@ update msg model =
       (Err _) -> (model, Cmd.none)
     Set ->
       (model, setNumOnServer "1")
-    AfterSet
+    AfterPut
       (Ok value) -> (model, Cmd.none)
-    AfterSet
+    AfterPut
       (Err _) -> (model, Cmd.none)
 
 main =
